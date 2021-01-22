@@ -1,0 +1,501 @@
+@font-face {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 500;
+  src: local("Lato Medium"), local("Lato-Medium"), url("../fonts/Lato-Medium.woff2") format("woff2"),
+    url("../fonts/Lato-Medium.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 700;
+  src: local("Lato Bold"), local("Lato-Bold"), url("../fonts/Lato-Bold.woff2") format("woff2"),
+    url("../fonts/Lato-Bold.woff") format("woff");
+}
+
+html {
+  height: 100%;
+}
+
+*:focus {
+  outline: 0;
+}
+
+*:focus-visible {
+  outline: 3.2px solid var(--clr-night-25);
+  outline-offset: 4px;
+}
+
+:root {
+  --font-family: "Lato", sans-serif;
+
+  --font-size-h1: 40px;
+  --font-size-h2: 32px;
+  --font-size-h3: 24px;
+  --font-size-h4: 16px;
+  --font-size-h5: 14px;
+  --font-size-h6: 12px;
+  --font-size: 16px;
+  --font-size-small: 14px;
+
+  --font-weight: 500;
+  --font-weight-hard: 700;
+
+  --clr-night-25: #414141;
+  --clr-space: #fff;
+  --clr-space-57: #878787;
+  --clr-space-67: #9dadb9;
+  --clr-space-77: #bdc1ca;
+  --clr-space-94: #ecf0f4;
+  --clr-space-95: #eef2f5;
+  --clr-space-95-h: #dee3e6;
+  --clr-space-94-tr: rgb(221, 226, 230, 0.4);
+  --clr-success: #00ca39;
+  --clr-success-h: #04b536;
+  --clr-danger: #e44067;
+}
+
+.page {
+  min-height: 100%;
+  margin: 0;
+
+  display: flex;
+
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+  font-weight: var(--font-weight);
+  color: var(--clr-night-25);
+}
+
+.page__nav {
+  background: #5f00d8;
+}
+
+.page__footer {
+  margin-top: auto;
+  padding-top: 64px;
+  padding-bottom: 24px;
+}
+
+@media (min-width: 992px) {
+  .page__nav {
+    min-width: 254px;
+  }
+
+  .page__menu {
+    display: none;
+  }
+
+  .page__container {
+    height: 100%;
+  }
+
+  .page__main .page__container {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 991px) {
+  .page__nav {
+    height: 100vh;
+    overflow-y: scroll;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 40px;
+    bottom: 0;
+    z-index: 999;
+
+    opacity: 0;
+    transform: translate3d(-100%, 0, 0);
+    transition: transform 0.3s;
+  }
+
+  .page_menu {
+    overflow-y: hidden;
+  }
+
+  .page_menu-transition .page__nav {
+    opacity: 1;
+  }
+
+  .page_menu .page__nav {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+
+  .page__activator {
+    display: inline-block;
+    cursor: pointer;
+    padding: 20px;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .page__disactivator {
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .page_menu .page__disactivator {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 998;
+
+    display: block;
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.75);
+  }
+}
+
+@media (max-width: 479px) {
+  .page {
+    font-size: var(--font-size-small);
+  }
+}
+
+@media (min-width: 480px) and (max-width: 991px) {
+  .page_menu .page__nav {
+    display: flex !important;
+  }
+}
+
+@media (max-width: 479px) {
+  .page_menu .page__nav {
+    display: block !important;
+  }
+}
+
+.page__main {
+  display: flex;
+  flex-direction: column;
+
+  flex-grow: 1;
+  padding-bottom: 20px;
+}
+
+@media (min-width: 992px) {
+  .page__container {
+    padding-top: 80px;
+    padding-left: 56px;
+    padding-right: 56px;
+  }
+}
+
+@media (max-width: 991px) {
+  .page__container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+.page__pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 28px;
+  margin-bottom: 28px;
+}
+
+.page__snippet {
+  display: none;
+}
+
+.nav__logo {
+  display: block;
+  padding: 44px 34px 34px 34px;
+  fill: white;
+}
+
+.nav__items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav__link {
+  display: flex;
+  align-items: center;
+
+  padding: 20px 32px;
+
+  font-weight: var(--font-weight-hard);
+  text-decoration: none;
+  fill: white;
+  color: white;
+
+  transition: background-color 75ms;
+}
+
+.nav__link:hover {
+  background-color: #6f00fd;
+}
+
+.nav__icon {
+  padding-right: 20px;
+  opacity: 50%;
+}
+
+.nav__item_bottom {
+  margin-top: 56px;
+  margin-bottom: 44px;
+}
+
+@media (min-width: 992px) {
+  .nav__items {
+    /*  */
+  }
+}
+
+@media (min-width: 480px) and (max-width: 991px) {
+  .nav {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .nav__items {
+    flex-grow: 1;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .nav__item {
+    flex-basis: 50%;
+  }
+
+  .nav__item_bottom {
+    margin-top: auto;
+  }
+}
+
+.overview {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding-top: 20px;
+  padding-bottom: 40px;
+}
+
+.overview__title {
+  margin: 0;
+}
+
+@media (max-width: 596px) {
+  .overview__title {
+    font-size: 32px;
+  }
+}
+
+.user {
+  display: flex;
+  align-items: center;
+}
+
+.user__photo {
+  width: 34.64px;
+  height: 34.64px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: 24px;
+}
+
+.user__name {
+  font-weight: var(--font-weight);
+}
+
+.value-success {
+  color: var(--clr-success);
+}
+
+.value-danger {
+  color: var(--clr-danger);
+}
+
+h1 {
+  font-size: var(--font-size-h1);
+  font-weight: 400;
+}
+
+.link {
+  text-decoration: none;
+  color: #31a4ff;
+}
+
+.link:hover {
+  color: #0377d3;
+}
+
+.author {
+  font-weight: var(--font-weight-hard);
+  margin-bottom: 6px;
+}
+
+.button {
+  height: 36px;
+  padding-left: 18px;
+  padding-right: 18px;
+  border-radius: 5px;
+  border: none;
+
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-hard);
+  color: var(--clr-night-25);
+
+  cursor: pointer;
+  background-color: var(--clr-space-95);
+  transition: transform 150ms;
+  transform: perspective(1000px) translateZ(0px);
+}
+
+.button:hover {
+  background-color: var(--clr-space-95-h);
+}
+
+.button:active {
+  transform: perspective(1000px) translateZ(-48px);
+}
+
+.button svg {
+  fill: var(--clr-space-67);
+}
+
+.button_success {
+  color: var(--clr-space);
+  background-color: var(--clr-success);
+}
+
+.button_success:hover {
+  background-color: var(--clr-success-h);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.table thead {
+  color: var(--clr-space-57);
+}
+
+.table tbody {
+  color: var(--clr-night-25);
+}
+
+.table tbody tr:nth-child(odd) {
+  background-color: var(--clr-space-94-tr);
+}
+
+@media (min-width: 992px) {
+  .table th,
+  .table td {
+    padding: 16px 18px;
+  }
+}
+
+@media (max-width: 991px) {
+  .table {
+    position: relative;
+    table-layout: fixed;
+  }
+
+  .table:after,
+  .table thead:after {
+    display: block;
+    content: " ";
+    height: 0;
+    font-size: 0;
+    visibility: hidden;
+    clear: both;
+  }
+
+  .table thead {
+    float: left;
+    padding-right: 12px;
+  }
+
+  .table thead tr {
+    display: block;
+  }
+
+  .table tbody {
+    display: flex;
+    width: auto;
+    position: relative;
+    overflow-x: auto;
+    /* display: block; */
+    /* white-space: nowrap; */
+  }
+
+  .table tbody tr {
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  .table th {
+    display: table-caption;
+    padding: 16px 12px 16px 0;
+  }
+
+  .table td {
+    display: flex;
+    align-items: center;
+    padding: 16px 18px;
+  }
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+}
+
+.pagination__button {
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  transition: transform 150ms;
+  transform: perspective(1000px) translateZ(0px);
+}
+
+.pagination__button:hover {
+  transform: perspective(1000px) translateZ(120px);
+}
+
+.pagination__button svg {
+  width: 20.8px;
+  height: 20.8px;
+  fill: var(--clr-space-77);
+}
+
+.pagination__gen {
+  display: flex;
+  align-items: center;
+  margin-left: 16px;
+  margin-right: 16px;
+}
+
+.pagination__num {
+  min-width: 36px;
+  height: 36px;
+  border-radius: 5px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  user-select: none;
+  cursor: pointer;
+  color: var(--clr-night-25);
+  background-color: var(--clr-space-95);
+}
+
+.pagination__gen span:not(.pagination__num) {
+  margin-left: 20px;
+  margin-right: 20px;
+}
